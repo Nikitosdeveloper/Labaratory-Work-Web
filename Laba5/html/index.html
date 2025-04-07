@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Телефонная книга</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Телефонная книга</h1>
+    <div>
+        <label for="contactSelect">Выберите запись:</label>
+        <select id="contactSelect">
+            <option value="new">Новый номер</option>
+        </select>
+    </div>
+    <form id="contactForm">
+        <div>
+            <label for="full_name">ФИО:</label>
+            <input type="text" id="full_name" required>
+        </div>
+        <div>
+            <label for="number">Номер телефона:</label>
+            <input type="tel" id="number" required>
+        </div>
+        <div>
+            <label for="address">Адрес:</label>
+            <input type="text" id="address">
+        </div>
+        <div>
+            <label for="debt">Задолженность по оплате:</label>
+            <select id="debt">
+                <option value="yes">Есть</option>
+                <option value="no">Нет</option>
+            </select>
+        </div>
+    </form>
+    <div class="buttons">
+        <button id="saveBtn">Сохранить</button>
+        <button id="clearBtn">Очистить</button>
+        <button id="deleteBtn">Удалить номер</button>
+        <button id="showDebtorsBtn">Вывести все номера с задолженностью по оплате</button>
+    </div>
+    <div class="property-form">
+        <h3>Добавить новое свойство</h3>
+        <div>
+            <label>Название свойства:</label>
+            <input type="text" id="propertyName">
+        </div>
+        <div>
+            <label>Значение свойства:</label>
+            <input type="text" id="propertyValue">
+        </div>
+        <button id="addPropertyBtn">Добавить свойство</button>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

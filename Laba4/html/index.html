@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос: любимые телепередачи</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h2>Опрос: любимые телепередачи</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="results.html">Результаты</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article>
+            <form id="surveyForm">
+                <div class="form-group">
+                    <label for="fullName">Ваше ФИО:</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Иванов Иван Иванович">
+                </div>
+                
+                <div class="form-group">
+                    <label>Ваш пол:</label>
+                    <div>
+                        <input type="radio" id="male" name="gender" value="М" required>
+                        <label for="male">М</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="female" name="gender" value="Ж">
+                        <label for="female">Ж</label>
+                    </div>    
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthDate">Ваша дата рождения:</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Ваш телефон:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[0-9]{3}\s?[0-9]{3}-?[0-9]{2}-?[0-9]{2}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Ваш email:</label>
+                    <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tvShowUrl">Ссылка на вашу любимую телепередачу:</label>
+                    <input type="url" id="tvShowUrl" name="tvShowUrl" placeholder="https://example.com/show">
+                </div>
+
+                <div class="form-group">
+                    <label>Ваши любимые жанры:</label>
+                    <div>
+                        <input type="checkbox" id="news" name="genres" value="Новости">
+                        <label for="news">Новости</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="talkShow" name="genres" value="Ток-шоу">
+                        <label for="talkShow">Ток-шоу</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="drama" name="genres" value="Драма">
+                        <label for="drama">Драма</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="reality" name="genres" value="Реалити-шоу">
+                        <label for="reality">Реалити-шоу</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Отправить</button>
+            </form>
+        </article>
+        <aside>
+            <h3>Интересные факты о ТВ</h3>
+            <p>Самое долгое ток-шоу в истории — «The Tonight Show» (США), длилось 30 лет!</p>
+            <h3>Топ-3 передачи 2024</h3>
+            <ol>
+                <li>«Игра престолов: Возрождение»</li>
+                <li>«Вечерний Ургант»</li>
+                <li>«Голос»</li>
+            </ol>
+            <div class="ad">
+                <p>Смотрите новые сезоны на <a href="https://netflix.com" target="_blank">Netflix</a>!</p>
+            </div>
+        </aside>
+    </main>
+    <footer>
+        <p>© 2025 Телеканал WebТВ. Все права защищены.</p>
+    </footer>
+    <script src="../js/scripts.js"></script>
+</body>
+</html>
