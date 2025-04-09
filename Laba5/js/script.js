@@ -1,11 +1,12 @@
 const phoneBookApp = {
 
+    history: [],
     contacts: [],
 
     init() {
-
+        
         this.loadData();
-
+        this.loadHistory(); 
         this.updateIdSelect();
 
         document.getElementById('saveBtn').addEventListener('click', () => this.saveContact());
@@ -16,6 +17,80 @@ const phoneBookApp = {
 
 
         this.displayContacts();
+        this.displayHistory();
+    },
+
+    addHistoryEntry(action, id, details = '') {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        const dateString = now.toLocaleDateString();
+        
+        let entry = {
+            timestamp: now,
+            action: action,
+            id: id,
+            details: details
+        };
+        
+        this.history.unshift(entry);
+        this.saveHistory();
+        this.displayHistory();
+        
+        if (this.history.length > 50) {
+            this.history.pop();
+        }
+    },
+
+    saveHistory() {
+        localStorage.setItem('phoneBookHistory', JSON.stringify(this.history));
+    },
+
+    loadHistory() {
+        const savedHistory = localStorage.getItem('phoneBookHistory');
+        if (savedHistory) {
+            this.history = JSON.parse(savedHistory);
+            this.history.forEach(entry => {
+                entry.timestamp = new Date(entry.timestamp);
+            });
+        }
+    },
+
+    displayHistory() {
+        const historyLog = document.getElementById('historyLog');
+        historyLog.innerHTML = '';
+        
+        this.history.forEach(entry => {
+            const entryElement = document.createElement('div');
+            entryElement.className = 'history-entry';
+            
+            const timeString = entry.timestamp.toLocaleTimeString();
+            const dateString = entry.timestamp.toLocaleDateString();
+            
+            let actionText = '';
+            switch(entry.action) {
+                case 'add':
+                    actionText = `Добавлена новая запись с ID ${entry.id}`;
+                    break;
+                case 'delete':
+                    actionText = `Запись с ID ${entry.id} была удалена`;
+                    break;
+                case 'update':
+                    actionText = `Запись с ID ${entry.id} была изменена`;
+                    break;
+                case 'property_add':
+                    actionText = `К записи с ID ${entry.id} добавлено свойство: ${entry.details}`;
+                    break;
+                default:
+                    actionText = `Произведено действие с записью ID ${entry.id}`;
+            }
+            
+            entryElement.innerHTML = `
+                <span class="history-time">${dateString} ${timeString}</span>
+                <span class="history-action">${actionText}</span>
+            `;
+            
+            historyLog.appendChild(entryElement);
+        });
     },
 
     loadData() {
@@ -68,6 +143,7 @@ const phoneBookApp = {
             };
 
             this.contacts.push(newContact);
+            this.addHistoryEntry('add', newId, `ФИО: ${fullName}, Телефон: ${phoneNumber}`);
         } else {
 
             const id = parseInt(idSelect.value);
@@ -79,6 +155,7 @@ const phoneBookApp = {
                 contact.address = address;
                 contact.debt = debt === 'yes';
             }
+            this.addHistoryEntry('update', id, `ФИО: ${fullName}, Телефон: ${phoneNumber}`);
         }
 
 
@@ -99,17 +176,29 @@ const phoneBookApp = {
     },
 
     deleteContact() {
-        const id = parseInt(document.getElementById('contactSelect').value);
-
-        if (id && id !== 'new') {
-            this.contacts = this.contacts.filter(c => c.id !== id);
-            this.saveData();
-            this.updateIdSelect();
-            this.displayContacts();
-            this.clearForm();
-        } else {
+        const idSelect = document.getElementById('contactSelect');
+        const id = idSelect.value === 'new' ? null : parseInt(idSelect.value);
+        
+        if (!id) {
             alert('Выберите запись для удаления!');
+            return;
         }
+    
+        const contactIndex = this.contacts.findIndex(c => c.id === id);
+        
+        if (contactIndex === -1) {
+            alert('Запись не найдена!');
+            return;
+        }
+    
+        const contactToDelete = this.contacts[contactIndex];
+        this.addHistoryEntry('delete', id, `ФИО: ${contactToDelete.fullName}`);
+    
+        this.contacts.splice(contactIndex, 1);
+        this.saveData();
+        this.updateIdSelect();
+        this.displayContacts();
+        this.clearForm();
     },
 
     showDebtors() {
@@ -149,6 +238,7 @@ const phoneBookApp = {
 
         if (contact) {
             contact.customProperties[propertyName] = propertyValue;
+            this.addHistoryEntry('property_add', id, `${propertyName}: ${propertyValue}`);
             this.saveData();
             this.displayContacts();
             document.getElementById('propertyName').value = '';

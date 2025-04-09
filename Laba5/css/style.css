@@ -131,3 +131,59 @@ body {
     padding: 10px;
     max-width: 400px;
   }
+  .history-section {
+    margin-top: 30px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.history-section h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+#historyLog {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.history-entry {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.history-time {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+.history-action {
+    font-weight: 500;
+}
+
+#historyLog::-webkit-scrollbar {
+    width: 8px;
+}
+
+#historyLog::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#historyLog::-webkit-scrollbar-thumb {
+    background: #bdc3c7;
+    border-radius: 4px;
+}
+
+#historyLog::-webkit-scrollbar-thumb:hover {
+    background: #95a5a6;
+}
