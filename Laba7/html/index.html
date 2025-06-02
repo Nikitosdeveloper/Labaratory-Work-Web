@@ -1,0 +1,102 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Blocks</title>
+  <link rel="stylesheet" href="D:/Универ/4 семестр/ПиWeb/Laba7/css/styles.css">
+</head>
+<body>
+  <div class="controls">
+    <h1>Создание и настройка блоков</h1>
+    <div class="form-group">
+      <label for="block-size">Размер блока:</label>
+      <select id="block-size">
+        <option value="small">Маленький (300x200)</option>
+        <option value="medium">Средний (400x300)</option>
+        <option value="large">Большой (600x400)</option>
+        <option value="xlarge">Огромный (800x500)</option>
+        <option value="gigant">Гигантский (1000x1000)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="block-margin">Отступы:</label>
+      <select id="block-margin">
+        <option value="10">10px</option>
+        <option value="20">20px</option>
+        <option value="30">30px</option>
+        <option value="40">40px</option>
+        <option value="50">50px</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="block-title">Заголовок:</label>
+      <select id="block-title">
+        <option value="Эльдары">Эльдары</option>
+        <option value="Тираниды">Тираниды</option>
+        <option value="Имперская гвардия">Имперская гвардия</option>
+        <option value="Космодесант">Космодесант</option>
+        <option value="Орки">Орки</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="block-image">Картинка:</label>
+      <select id="block-image">
+        <option value="D:/Универ/4 семестр/ПиWeb/Laba7/resource/imperial_guard.jpg">Изображение 1</option>
+        <option value="D:/Универ/4 семестр/ПиWeb/Laba7/resource/space_marine.webp">Изображение 2</option>
+        <option value="D:/Универ/4 семестр/ПиWeb/Laba7/resource/eldar.jpg">Изображение 3</option>
+        <option value="D:/Универ/4 семестр/ПиWeb/Laba7/resource/orks.jpg">Изображение 4</option>
+        <option value="D:/Универ/4 семестр/ПиWeb/Laba7/resource/tyranids.webp">Изображение 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="block-text">Текст:</label>
+      <select id="block-text">
+        <option value="Древняя, высокоразвитая раса с утонченной технологией и психическими способностями, стремящаяся выжить после падения своей цивилизации. Их армии быстры, маневренны и полагаются на хитрость и точечные удары">Текст 1</option>
+        <option value="Дикие, воинственные зеленокожие, живущие ради войны и разрушения, с примитивной, но эффективной технологией. Их сила — в грубой мощи, численности и хаотичной изобретательности">Текст 2</option>
+        <option value="Огромная армия человечества во вселенной Warhammer 40,000, состоящая из миллиардов солдат, использующих массовую пехоту, танки и артиллерию для защиты Империума. Сила в численности и стойкости, несмотря на суровые условия и высокие потери.">Текст 3</option>
+        <option value="Чужеродный рой, пожирающий целые миры, ведомый коллективным разумом Улья. Их бесконечные орды биомашин адаптируются и уничтожают всё на своём пути">Текст 4</option>
+        <option value="литные генетически модифицированные суперсолдаты, верные Императору, сражающиеся в тяжелой броне и с мощным оружием. Каждая глава космодесанта — автономный орден, сочетающий тактику, честь и фанатичную преданность">Текст 5</option>
+      </select>
+    </div>
+    <button id="add-block">Добавить блок</button>
+  </div>
+  <div id="blocks-container"></div>
+  <script src="D:/Универ/4 семестр/ПиWeb/Laba7/js/script.js"></script>
+</body>
+</html>

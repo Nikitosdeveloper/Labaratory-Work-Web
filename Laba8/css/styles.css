@@ -1,0 +1,23 @@
+body {
+  background: linear-gradient(135deg, #1e3a8a, #7e22ce);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.pulse {
+  transition: all 0.3s ease;
+}
+.pulse:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.wave-animation {
+  animation: wave 1.5s infinite;
+}
+@keyframes wave {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+  100% { transform: scaleY(1); }
+}

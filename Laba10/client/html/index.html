@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Array Processor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Array Processor</h1>
+        
+        <div class="controls">
+            <label for="decimals">Decimal places:</label>
+            <select id="decimals">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            
+            <button id="sortAsc">Sort Ascending</button>
+            <button id="sortDesc">Sort Descending</button>
+            <button id="showOriginal">Show Original</button>
+        </div>
+        
+        <h2>Original Data</h2>
+        <div id="originalTable" class="table-container"></div>
+        
+        <h2>Processed Data</h2>
+        <div id="processedTable" class="table-container"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "lab-project",
+  "version": "1.0.0",
+  "description": "Node.js lab project with array processing",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
