@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Массив после обработки</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Lab</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <h1>Массив после обработки</h1>
-  <table id="sortedTable"></table>
-  <h2>Максимальный элемент: <span id="maxElement"></span></h2>
-  <button onclick="window.location.href='index.html'">Вернуться к исходному массиву</button>
-  <script src="../js/script.js"></script>
-  <script>
-    fetchArrayData('sorted', 'sortedTable', 'maxElement');
-  </script>
+    <div class="container">
+        <h1>Обработанный массив</h1>
+        
+        <h2>Изначальный  массив (10x10)</h2>
+        <table id="originalArrayTable"></table>
+        
+        <h2>Отсортированный массив (10x10)</h2>
+        <table id="sortedArrayTable"></table>
+        
+        <h2>Максимальный элемент: <span id="maxElement"></span></h2>
+        
+        <button id="backBtn">Назад</button>
+    </div>
+    <script src="../js/result.js"></script>
 </body>
 </html>

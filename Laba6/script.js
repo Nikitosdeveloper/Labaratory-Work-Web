@@ -1,14 +1,14 @@
 class NewsManager {
     constructor() {
         this.imageSet = new Set([
-            'https://via.placeholder.com/300x200?text=Новость+1',
-            'https://via.placeholder.com/300x200?text=Новость+2',
-            'https://via.placeholder.com/300x200?text=Новость+3'
+            'images3.jpg',
+            'images2.jpg',
+            'images4.jpg'
         ]);
         this.paragraphSet = new Set([
-            'Главные новости',
-            'Местное событие',
-            'Глобальное обновление'
+            'Вчера в столице прошел ежегодный марафон, собравший более 5000 участников со всего региона.',
+            'Местные власти открыли новый парк с детскими площадками и зонами отдыха для жителей города.',
+            'Ученые объявили о прорыве в разработке возобновляемых источников энергии, обещающем снизить выбросы углерода.'
         ]);
         this.container = document.getElementById('newsContainer');
     }
@@ -49,12 +49,12 @@ class NewsEditor extends NewsManager {
     constructor() {
         super();
         this.newImages = new Set([
-            'https://via.placeholder.com/300x200?text=Новая+картинка+1',
-            'https://via.placeholder.com/300x200?text=Новая+картинка+2'
+            'image1.aif',
+            'images2.jpg'
         ]);
         this.newParagraphs = new Set([
-            'Новая история',
-            'Последнее обновление'
+            'На этой неделе местный театр представил новую постановку, которая уже получила восторженные отзывы зрителей.',
+            'Команда исследователей обнаружила редкий вид рыбы в прибрежных водах, что вызвало интерес у экологов.'
         ]);
     }
 

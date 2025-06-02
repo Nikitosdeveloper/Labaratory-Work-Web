@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Array Processor</title>
+    <title>Массив чисел</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Number Array Processor</h1>
+        <h1>Массив чисел</h1>
         
         <div class="controls">
-            <label for="decimals">Decimal places:</label>
+            <label for="decimals">Знаков после запятой:</label>
             <select id="decimals">
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -24,15 +24,15 @@
                 <option value="6">6</option>
             </select>
             
-            <button id="sortAsc">Sort Ascending</button>
-            <button id="sortDesc">Sort Descending</button>
-            <button id="showOriginal">Show Original</button>
+            <button id="sortAsc">Сортировать по возрастанию</button>
+            <button id="sortDesc">Сортировать по убыванию</button>
+            <button id="showOriginal">Показать исходные данные</button>
         </div>
         
-        <h2>Original Data</h2>
+        <h2>Исходные данные</h2>
         <div id="originalTable" class="table-container"></div>
         
-        <h2>Processed Data</h2>
+        <h2>Обработанные данные</h2>
         <div id="processedTable" class="table-container"></div>
     </div>
 </body>

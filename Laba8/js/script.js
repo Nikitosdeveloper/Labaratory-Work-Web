@@ -1,9 +1,9 @@
 const songs = new Map([
-  ['Песня 1', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Norway.m4a', artist: 'Исполнитель 1' }],
-  ['Песня 2', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Germany.m4a', artist: 'Исполнитель 2' }],
-  ['Песня 3', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Estoniya.m4a', artist: 'Исполнитель 3' }],
-  ['Песня 4', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Sweden.m4a', artist: 'Исполнитель 4' }],
-  ['Песня 5', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Israel.m4a', artist: 'Исполнитель 5' }],
+  ['Lighter', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Norway.m4a', artist: 'Норвегия' }],
+  ['Baller', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Germany.m4a', artist: 'Германия' }],
+  ['Espresso macchiato', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Estoniya.m4a', artist: 'Эстония' }],
+  ['Bara bada bastu', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Sweden.m4a', artist: 'Швеция' }],
+  ['New day will rise', { url: 'D:/Универ/4 семестр/ПиWeb/Laba8/resource/Israel.m4a', artist: 'Израиль' }],
 ]);
 
 let audio = null;
